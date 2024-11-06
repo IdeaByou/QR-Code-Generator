@@ -46,6 +46,7 @@ class App (ctk.CTk) :
         self.save_button.place(relx = .5,rely = .925,anchor = "center")
         
     def generate_qr(self):
+        """generate qr and show result"""
         data = self.input_textbox.get("1.0", "end-1c")  # Get text from textbox
         if not data:
             return 
@@ -56,8 +57,9 @@ class App (ctk.CTk) :
         self.show_QRImg()
 
     def saveImage(self):
+        """Save QR Code image with filedialog"""
         # Check if QR code has been generated
-        if not hasattr(self, 'img'):
+        if not (self, 'img'):
             return
         
         # Open file dialog for saving
@@ -78,6 +80,7 @@ class App (ctk.CTk) :
                 ctk.messagebox.showerror('Error', f'Failed to save image: {str(e)}')
 
     def show_QRImg (self):
+        """change the showing image"""
         self.ctk_QRImg = ctk.CTkImage(self.img,self.img,size = (200,200))
         self.showLabel.configure(image = self.ctk_QRImg)
         
